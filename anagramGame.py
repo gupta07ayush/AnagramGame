@@ -1,5 +1,6 @@
 import random
 import pyttsx3
+import time
 
 i=pyttsx3.init() #object creation
 i.setProperty('rate',150) # reducing the speech rate. Default is 200
@@ -24,11 +25,14 @@ i.runAndWait()
 
 while chances != 0:
     print("The word is: ",jumble)
+    start_time= time.perf_counter()
     guess = input("Enter your guessed word: ").lower()
     if guess == word:
+        end_time=time.perf_counter()
         print("\nCorrect guess")
         print(name,"You won!")
         i.say("Congratulations"+name)
+        i.say(f"You took {round(end_time - start_time)} seconds. ")
         i.runAndWait()
         break
     else:
@@ -37,7 +41,9 @@ while chances != 0:
         print("Remaining chances are: ",chances)
         
 else:
+    end_time = time.perf_counter()
     print("\nAll your chances are exhausted.")
+    print(f"You have wasted {end_time - start_time} seconds.")
     print(name+" You are a looser")
     i.say((name+" You are a looser \n")*5)
     print("The correct word is",word)
