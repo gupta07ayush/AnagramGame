@@ -1,6 +1,10 @@
 import random
 import pyttsx3
 import time
+import datetime
+
+t = datetime.datetime.now()
+t= t.hour
 
 i=pyttsx3.init() #object creation
 i.setProperty('rate',150) # reducing the speech rate. Default is 200
@@ -19,6 +23,13 @@ print("*"*180)
 print("                                                            Avengers Jumble Game                                                    ")
 print("*"*180)
 print()
+if t<12:
+    print("Good morning",name)
+elif 12 <= t < 18:
+    print("Good Afternoon",name)
+else:
+    print("Good Evening",name)    
+    
 i.say("Hello " +name+ " Welcome to the Avenger game. Here, You will be given any Avenger name and you have total 3 chances to guess the correct avenger.")
 i.runAndWait()
 
