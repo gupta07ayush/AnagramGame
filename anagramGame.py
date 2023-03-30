@@ -1,6 +1,10 @@
 import random
 import pyttsx3
 import time
+import datetime
+
+t = datetime.datetime.now()
+t= t.hour
 
 i=pyttsx3.init() #object creation
 i.setProperty('rate',150) # reducing the speech rate. Default is 200
@@ -8,7 +12,7 @@ i.setProperty('rate',150) # reducing the speech rate. Default is 200
 name= input("Enter your name: ")
 
 chances= 3
-words=["starlord","groot","wolverine","daredevil","captainmarvel","blackwidow","hawkeys","wasp","antman","blade","ghost rider","hulk","blackpanther","captainamerica","ironman","thor","loki","wanda","vision","doctor strange","spiderman"]
+words=["starlord","groot","wolverine","daredevil","captainmarvel","blackwidow","hawkeye","wasp","antman","blade","ghost rider","hulk","blackpanther","captainamerica","ironman","thor","loki","wanda","vision","doctor strange","spiderman"]
 word= random.choice(words)
 
 jumble=''.join(random.sample(word,len(word)))
@@ -19,6 +23,16 @@ print("*"*180)
 print("                                                            Avengers Jumble Game                                                    ")
 print("*"*180)
 print()
+if t<12:
+    print("I hope you are doing good",name)
+    i.say(f"Good morning {name}")
+elif 12 <= t < 18:
+    print("Good Afternoon",name)
+    i.say("Good AfterNoon",name)
+else:
+    print("Good Evening",name)  
+    i.say("Good Evening",name)  
+    
 i.say("Hello " +name+ " Welcome to the Avenger game. Here, You will be given any Avenger name and you have total 3 chances to guess the correct avenger.")
 i.runAndWait()
 
@@ -32,7 +46,8 @@ while chances != 0:
         print("\nCorrect guess")
         print(name,"You won!")
         i.say("Congratulations"+name)
-        i.say(f"You took {round(end_time - start_time)} seconds. ")
+        print(f"Time taken =  {end_time - start_time} seconds.")
+        i.say(f"You took {round(end_time - start_time)} seconds to guess the correct Avenger. ")
         i.runAndWait()
         break
     else:
