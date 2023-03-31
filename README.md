@@ -12,6 +12,6 @@
 
 4. If you don't give correct answer, You get another chance.
 
-5. You have total 2 chances.
+5. You have total 3 chances.
 
 </p>
